@@ -1,8 +1,10 @@
 package com.example.price_comparator;
 
 
+import com.example.price_comparator.model.Discount;
 import com.example.price_comparator.model.Product;
 import com.example.price_comparator.service.BasketService;
+import com.example.price_comparator.service.DiscountService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -32,6 +34,24 @@ public class PriceComparatorApplication {
 			}
 		}
 
+		DiscountService discountService = new DiscountService();
+		LocalDate newDate = LocalDate.of(2025, 5, 8);
+
+		List<Discount> topDiscounts = discountService.getTopXDiscounts(5, newDate);
+
+		System.out.println("📉 Top 5 reduceri active:");
+		for (Discount d : topDiscounts) {
+			System.out.printf(" - %s (%s, %s): %d%% reducere [%s → %s]\n",
+					d.getProductName(),
+					d.getBrand(),
+					d.getProductCategory(),
+					d.getPercentageOfDiscount(),
+					d.getFromDate(),
+					d.getToDate());
+			System.out.println("   Magazin: " + d.getStoreName());
+		}
 	}
 
 }
+
+

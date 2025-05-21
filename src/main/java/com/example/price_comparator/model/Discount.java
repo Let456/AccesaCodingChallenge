@@ -13,6 +13,15 @@ public class Discount {
     private LocalDate fromDate;
     private LocalDate toDate;
     private int percentageOfDiscount;
+    private String storeName;
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
 
     public String getProductId() {
         return productId;
