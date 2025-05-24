@@ -29,7 +29,6 @@ public class DiscountService {
         // Sortăm descrescător după procentul de reducere
         allDiscounts.sort(Comparator.comparingInt(Discount::getPercentageOfDiscount).reversed());
 
-        // Returnăm primele X reduceri
         return allDiscounts.stream().limit(x).toList();
     }
 
